@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  {%load static %}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Audio Recorder</title>
+
+  <script src="{% static 'EmotionRecognition/js/audiodisplay.js'%}"></script>
+  <script src="{%static 'EmotionRecognition/js/recorderjs/recorder.js'%}"></script>
+  <script src="{%static 'EmotionRecognition/js/main.js'%}"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'EmotionRecognition/vendor/bootstrap/css/bootstrap.min.css'%} " rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'EmotonRecognition/vendor/font-awesome/css/font-awesome.min.css'%} " rel="stylesheet" type="text/css">
+<!--     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+
+    <!-- Custom styles for this template -->
+    <link href="{%static 'EmotionRecognition/css/clean-blog.min.css'%} " rel="stylesheet">
+
+  <style>
+  html { overflow: hidden; }
+  body { 
+    font: 14pt Arial, sans-serif; 
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    margin: 0 0;
+  }
+  canvas { 
+    display: inline-block; 
+    background: #202020; 
+    width: 95%;
+    height: 30%;
+    box-shadow: 0px 0px 10px blue;
+  }
+  #controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 20%;
+    width: 100%;
+  }
+  #record { height: 15vh; }
+  #record.recording { 
+    background: red;
+    background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,black 75%,#000000 100%,#7db9e8 100%);
+    background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+    background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+  }
+  #save, #save img { height: 10vh; }
+  #save { opacity: 0.25;}
+  #save[download] { opacity: 1;}
+  #viz {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  @media (orientation: landscape) {
+    body { flex-direction: row;}
+    #controls { flex-direction: column; height: 100%; width: 10%;}
+    #viz { height: 100%; width: 90%;}
+  }
+
+  </style>
+</head>
+<body>
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">Stage1</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/details">Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/live/">Try it yourself</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <div id="viz" style="background-color: black;">
+    <canvas id="analyser" width="1024" height="500"></canvas>
+    <canvas id="wavedisplay" width="1024" height="500"></canvas>
+  </div>
+  <div id="controls" style="background-color: black;">
+    <img id="record" src="{% static 'EmotionRecognition/img/mic128.png'%}" onclick="toggleRecording(this);">
+    <a id="save" href=""><img src="https://webaudiodemos.appspot.com/AudioRecorder/img/save.svg"></a>
+    <a href="/livepredict/" style="color: white;"><h4>PREDICT</h4></a>
+  </div>
+</body>
+</html>
