@@ -110,7 +110,7 @@ DEALINGS IN THE SOFTWARE.
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
     var link = document.getElementById("save");
     link.href = url;
-    link.download = 'output.wav';
+    link.download = 'test.wav';
   }
 
   window.Recorder = Recorder;

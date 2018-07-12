@@ -21,9 +21,10 @@ from django.conf import settings
 
 urlpatterns = [
 	url(r'^$',views.index),
-    url(r'^admin/$', admin.site.urls),
-    url(r'^details/$', views.details),
-    url(r'^live/$',views.liveRecord),
-    url(r'^livepredict/$',views.livepredict),
-    url(r'^(?P<string>.+)',views.predictEmotion),
+    url(r'^admin/', admin.site.urls),
+    url(r'^details$', views.details),
+    url(r'^live/',views.liveRecord),
+    url(r'^livepredict/',views.livepredict),
+    url(r'^feat/',views.feat),
+    url(r'^(?P<string>.+)$',views.predictEmotion),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

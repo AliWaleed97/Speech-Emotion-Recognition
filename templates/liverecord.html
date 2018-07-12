@@ -4,6 +4,7 @@
   {%load static %}
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Audio Recorder</title>
+  <link rel="icon" href="{% static '/EmotionRecognition/img/mic128.png' %}">
 
   <script src="{% static 'EmotionRecognition/js/audiodisplay.js'%}"></script>
   <script src="{%static 'EmotionRecognition/js/recorderjs/recorder.js'%}"></script>
@@ -98,6 +99,16 @@
     </nav>
   <div id="viz" style="background-color: black;">
     <canvas id="analyser" width="1024" height="500"></canvas>
+<!--     <div id='rectify'>
+      <li>ZRC: {{F.0}}</li>
+      <li>Energy: {{F.1}}</li>
+      <li>Entropy of Energy: {{F.2}}</li>
+      <li>Spectral Centroid: {{F.3}}</li>
+      <li>Spectral Spread: {{F.4}}</li>
+      <li>Spectral Entropy: {{F.5}}</li>
+      <li>Spectral Flux: {{F.6}}</li>
+      <li>Spectral Rolloff: {{F.7}}</li>
+    </div> -->
     <canvas id="wavedisplay" width="1024" height="500"></canvas>
   </div>
   <div id="controls" style="background-color: black;">
@@ -105,5 +116,6 @@
     <a id="save" href=""><img src="https://webaudiodemos.appspot.com/AudioRecorder/img/save.svg"></a>
     <a href="/livepredict/" style="color: white;"><h4>PREDICT</h4></a>
   </div>
+
 </body>
 </html>
